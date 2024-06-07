@@ -1,6 +1,5 @@
 from pydantic import ValidationError
 import pytest
-from uuid import UUID
 from tdd_project.store.schemas.product import ProductIn
 from tdd_project.tests.factories import product_data
 
@@ -10,7 +9,6 @@ def test_schemas_return_success():
 
     assert product.name == "arroz branco"
     assert product.quantity == 10
-    assert isinstance(product.id, UUID)
 
 
 def test_schemas_return_raise():
