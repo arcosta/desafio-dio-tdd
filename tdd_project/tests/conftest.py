@@ -4,7 +4,7 @@ from uuid import UUID
 from httpx import AsyncClient, ASGITransport
 
 from tdd_project.store.db.mongo import db_mongo
-from tdd_project.store.schemas.product import ProductIn, ProductUpdate
+from tdd_project.store.schemas.product import ProductIn, ProductUpdate, ProductOut
 from tdd_project.store.usecases.product import product_usecase
 from tdd_project.tests.factories import product_data, products_data
 
@@ -52,7 +52,7 @@ def product_up(product_id):
 
 
 @pytest.fixture
-async def product_inserted(product_in):
+async def product_inserted(product_in) -> ProductOut:
     return await product_usecase.create(body=product_in)
 
 

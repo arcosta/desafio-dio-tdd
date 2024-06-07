@@ -31,7 +31,7 @@ async def get(
 
 
 @router.get(path="/", status_code=status.HTTP_200_OK)
-async def query(usecase: ProductUsecase = Depends()) -> ProductOut:
+async def query(usecase: ProductUsecase = Depends()) -> list[ProductOut]:
     return await usecase.query()
 
 

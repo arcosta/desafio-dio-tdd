@@ -36,16 +36,17 @@ async def test_controller_get_should_return_not_found(
 
 @pytest.mark.usefixtures("product_inserted")
 async def test_controller_query_should_return_success(client, products_url):
-    response = await client.get(products_url)
+    response = await client.get(f"{products_url}")
 
     assert response.status_code == status.HTTP_200_OK
     assert isinstance(response.json(), list)
-    assert len(response.json()) > 1
+    assert len(response.json()) >= 1
 
 
 async def test_controller_patch_should_return_success(
     client, products_url, product_inserted
 ):
+    # breakpoint()
     response = await client.patch(
         f"{products_url}{product_inserted.id}", json={"quantity": 40}
     )

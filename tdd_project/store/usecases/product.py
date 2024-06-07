@@ -35,7 +35,6 @@ class ProductUsecase:
         return ProductOut(**result)
 
     async def query(self) -> list[ProductOut]:
-        # breakpoint()
         return [ProductOut(**item) async for item in self.collection.find()]
 
     async def update(self, id: UUID, body: ProductUpdate) -> ProductUpdateOut:
